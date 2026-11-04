@@ -88,11 +88,11 @@ class Dokumen extends Model
         };
     }
 
-    /** Aturan lama: SPK selalu boleh dicetak; BAST hanya setelah disetujui PPK (admin/katim selalu boleh). */
+    /** SPK hanya boleh dicetak setelah disetujui PPK; BAST juga, kecuali bagi admin/katim. */
     public function bolehCetak(string $jenis, ?User $user): bool
     {
         if ($jenis === 'spk') {
-            return true;
+            return $this->status_verifikasi->layakCetak();
         }
         if ($user?->bisaKelolaDokumen()) {
             return true;

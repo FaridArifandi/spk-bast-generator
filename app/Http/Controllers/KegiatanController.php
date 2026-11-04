@@ -32,17 +32,20 @@ class KegiatanController extends Controller
 
     public function edit(Kegiatan $kegiatan)
     {
+        abort_unless(request()->user()->bisaKelolaTim($kegiatan->ketua_tim_id), 403, 'Kegiatan ini bukan milik tim Anda.');
         return view('master.kegiatan.form', ['item' => $kegiatan, 'pegawai' => Pegawai::orderBy('nama')->get()]);
     }
 
     public function update(Request $request, Kegiatan $kegiatan)
     {
+        abort_unless($request->user()->bisaKelolaTim($kegiatan->ketua_tim_id), 403, 'Kegiatan ini bukan milik tim Anda.');
         $kegiatan->update($this->validasi($request, $kegiatan));
         return redirect()->route('kegiatan.index')->with('sukses', 'Kegiatan diperbarui.');
     }
 
     public function destroy(Kegiatan $kegiatan)
     {
+        abort_unless(request()->user()->bisaKelolaTim($kegiatan->ketua_tim_id), 403, 'Kegiatan ini bukan milik tim Anda.');
         if (Penugasan::where('kegiatan_id', $kegiatan->id)->exists() || DokumenDetail::where('kegiatan_id', $kegiatan->id)->exists()) {
             return back()->with('galat', 'Kegiatan sudah dipakai pada penugasan/dokumen, tidak bisa dihapus.');
         }
@@ -52,7 +55,7 @@ class KegiatanController extends Controller
 
     private function validasi(Request $request, ?Kegiatan $kegiatan = null): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'kode' => ['required', 'string', 'max:30', Rule::unique('kegiatan', 'kode')->ignore($kegiatan)],
             'uraian_tugas' => ['required', 'string', 'max:500'],
             'satuan' => ['required', 'string', 'max:60'],
@@ -61,5 +64,13 @@ class KegiatanController extends Controller
             'buku_pedoman' => ['nullable', 'string', 'max:255'],
             'ketua_tim_id' => ['nullable', 'exists:pegawai,id'],
         ]);
+
+        // KATIM selalu menjadi ketua tim kegiatan yang ia buat/ubah
+        $user = $request->user();
+        if (! $user->isAdmin() && $user->pegawai_id) {
+            $data['ketua_tim_id'] = $user->pegawai_id;
+        }
+
+        return $data;
     }
 }

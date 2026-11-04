@@ -1,0 +1,186 @@
+[
+  {
+    "nama": "Adi Putra, SP",
+    "nip": "197208131993011001",
+    "jabatan": "Kepala BPS Kota Subulussalam",
+    "pangkat": "IVa/",
+    "golongan": "Pembina",
+    "is_ppk": false
+  },
+  {
+    "nama": "Erni Lusiani, S.Stat.",
+    "nip": "199604202019032003",
+    "jabatan": "Kasubbag Umum",
+    "pangkat": "IIIc/",
+    "golongan": "Penata",
+    "is_ppk": false
+  },
+  {
+    "nama": "Arpian, SE",
+    "nip": "198203282011011010",
+    "jabatan": "Statistisi Ahli Muda",
+    "pangkat": "IIId/",
+    "golongan": "Penata TK.I",
+    "is_ppk": false
+  },
+  {
+    "nama": "Arma Juwita, S.Tr.Stat",
+    "nip": "199602202019012001",
+    "jabatan": "Pejabat Pembuat Komitmen",
+    "pangkat": "IIIb/",
+    "golongan": "Penata Muda TK.I",
+    "is_ppk": true
+  },
+  {
+    "nama": "Tri Wahyudi, S.Stat",
+    "nip": "199703012019031001",
+    "jabatan": "Ketua Tim Distribusi",
+    "pangkat": "IIIb/",
+    "golongan": "Penata Muda TK.I",
+    "is_ppk": false
+  },
+  {
+    "nama": "Suciarti Pertiwi, S.Tr.Stat",
+    "nip": "199712012021042001",
+    "jabatan": "Ketua Tim Diseminasi",
+    "pangkat": "IIIb/",
+    "golongan": "Penata Muda TK.I",
+    "is_ppk": false
+  },
+  {
+    "nama": "M. Thariq Alfatih, S.Tr.Stat",
+    "nip": "199809092022011002",
+    "jabatan": "Ketua Tim Produksi",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Raden Daffa Ivan Febrio, S.Tr. Stat.",
+    "nip": "200002202023021003",
+    "jabatan": "Ketua Tim Neraca",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Putri Nurhilwa Salsabila, S.Tr.Stat.",
+    "nip": "200107032023102005",
+    "jabatan": "Ketua Tim Sosial",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Rahadian Budi Kusumah, S.Tr.Stat.",
+    "nip": "200007292023101001",
+    "jabatan": "Statistisi Ahli Pertama",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Mutia Soraya Adila, S.Tr. Stat.",
+    "nip": "200002022023022001",
+    "jabatan": "Ketua Tim Pengolahan",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Supriadi Hamdani Berasa",
+    "nip": "198207082009111002",
+    "jabatan": "PK APBN Terampil",
+    "pangkat": "IId/",
+    "golongan": "Pengatur TK.I",
+    "is_ppk": false
+  },
+  {
+    "nama": "Ferri Ahmad Shauqi",
+    "nip": "197604182006041022",
+    "jabatan": "Pelaksana",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Ibrahim",
+    "nip": "198004122009011007",
+    "jabatan": "Pelaksana",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Fauzan Helmi, A.Md",
+    "nip": "199510292024211001",
+    "jabatan": "Pranata Komputer Terampil",
+    "pangkat": "VII/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Sri Deza Kurnia Devi, ST",
+    "nip": "199412042025212046",
+    "jabatan": "Penata Layanan Operasional",
+    "pangkat": "IX/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Tahan Boang Manalu, S.Pd",
+    "nip": "199105192025211136",
+    "jabatan": "Penata Layanan Operasional",
+    "pangkat": "IX/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Joni",
+    "nip": "198908012025211064",
+    "jabatan": "Penata Layanan Operasional",
+    "pangkat": "IX/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Sarno Satriansyah Berasa",
+    "nip": "198710052025211069",
+    "jabatan": "Operator Layanan Operasional",
+    "pangkat": "IV/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Syah Iman Lavau",
+    "nip": "197903262025211024",
+    "jabatan": "Operator Layanan Operasional",
+    "pangkat": "IV/",
+    "golongan": "PPPK",
+    "is_ppk": false
+  },
+  {
+    "nama": "Rizqe Putri Rosalia, A.Md.Stat.",
+    "nip": "200309292026032001",
+    "jabatan": "Statistisi Terampil",
+    "pangkat": "IIc/",
+    "golongan": "Pengatur",
+    "is_ppk": false
+  },
+  {
+    "nama": "Farid Akbar Arifandi, S.Tr.Stat.",
+    "nip": "200110252026031001",
+    "jabatan": "Pranata Komputer Ahli Pratama",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  },
+  {
+    "nama": "Jasika Lisayoana, S.Tr.Stat.",
+    "nip": "200001142023022002",
+    "jabatan": "Statistisi Ahli Pertama",
+    "pangkat": "IIIa/",
+    "golongan": "Penata Muda",
+    "is_ppk": false
+  }
+]

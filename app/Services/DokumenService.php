@@ -119,6 +119,14 @@ class DokumenService
                     $det->harga_satuan = max(0, (int) $row['harga_satuan']);
                     $det->nilai_perjanjian = $det->volume * $det->harga_satuan;
                     $det->save();
+
+                    if ($det->penugasan_id) {
+                        Penugasan::whereKey($det->penugasan_id)->update([
+                            'volume' => $det->volume,
+                            'harga_satuan' => $det->harga_satuan,
+                            'total_honor' => $det->nilai_perjanjian,
+                        ]);
+                    }
                 }
                 $d->total_honor = (int) $d->details()->sum('nilai_perjanjian');
             }

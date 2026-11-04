@@ -81,8 +81,10 @@ class BastSmPpkController extends Controller
         return response()->download($berkas['path'], $berkas['nama'])->deleteFileAfterSend(true);
     }
 
-    public function edit(BastSmPpk $bast)
+    public function edit(Request $request, BastSmPpk $bast)
     {
+        abort_unless($request->user()->bisaKelolaTim($bast->ketua_tim_id), 403, 'BAST ini bukan milik tim Anda.');
+
         return view('dokumen.sm-ppk.form', [
             'bast' => $bast,
             'kegiatan' => Kegiatan::orderBy('kode')->get(),
@@ -94,6 +96,8 @@ class BastSmPpkController extends Controller
 
     public function update(Request $request, BastSmPpk $bast)
     {
+        abort_unless($request->user()->bisaKelolaTim($bast->ketua_tim_id), 403, 'BAST ini bukan milik tim Anda.');
+
         $data = $this->validasi($request, $bast);
         $data['total_honor'] = $data['total_honor'] ?? $this->hitungHonor($data);
 
@@ -107,8 +111,10 @@ class BastSmPpkController extends Controller
         return redirect()->route('bast-sm-ppk.show', $bast)->with('sukses', 'BAST SM → PPK diperbarui.');
     }
 
-    public function destroy(BastSmPpk $bast)
+    public function destroy(Request $request, BastSmPpk $bast)
     {
+        abort_unless($request->user()->bisaKelolaTim($bast->ketua_tim_id), 403, 'BAST ini bukan milik tim Anda.');
+
         $bast->delete();
 
         return redirect()->route('bast-sm-ppk.index')->with('sukses', 'BAST SM → PPK dihapus.');
@@ -127,7 +133,9 @@ class BastSmPpkController extends Controller
             'total_honor' => ['nullable', 'integer', 'min:0'],
         ]);
 
-        if ($this->nomor->pakaiBastSmPpk($data['no_bast'], $bast?->id)) {
+        abort_unless($request->user()->bisaKelolaTim((int) $data['ketua_tim_id']), 403, 'BAST ini harus atas nama ketua tim Anda sendiri.');
+
+        if ($this->nomor->bastDipakai($data['no_bast'], null, $bast?->id)) {
             throw \Illuminate\Validation\ValidationException::withMessages(['no_bast' => 'Nomor BAST SM → PPK sudah dipakai.']);
         }
 
@@ -137,8 +145,12 @@ class BastSmPpkController extends Controller
     /** Total honor semua rincian SPK (tidak ditolak) untuk kegiatan & bulan yang sama. */
     private function hitungHonor(array $data): int
     {
+        $uraian = trim($data['uraian_tugas']);
+        $kegiatanIds = Kegiatan::where('uraian_tugas', $uraian)->pluck('id');
+
         return (int) DokumenDetail::query()
-            ->where('uraian_tugas', $data['uraian_tugas'])
+            ->where(fn ($q) => $q->where('uraian_tugas', $uraian)
+                ->when($kegiatanIds->isNotEmpty(), fn ($w) => $w->orWhereIn('kegiatan_id', $kegiatanIds)))
             ->whereHas('dokumen', fn ($q) => $q
                 ->where('tahun', $data['tahun'])
                 ->where('bulan', $data['bulan'])

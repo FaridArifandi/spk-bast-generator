@@ -11,7 +11,7 @@
             <td>{{ $k->kode }}</td><td>{{ $k->uraian_tugas }}</td><td>{{ $k->satuan }}</td>
             <td class="num">{{ $k->harga_satuan !== null ? 'Rp '.\App\Support\Indonesia::rupiah($k->harga_satuan) : '—' }}</td>
             <td>{{ $k->ketuaTim?->nama }}</td>
-            <td class="num">@if(auth()->user()->bisaKelolaDokumen())
+            <td class="num">@if(auth()->user()->bisaKelolaTim($k->ketua_tim_id))
                 <a class="btn sm" href="{{ route('kegiatan.edit', $k) }}">Ubah</a>
                 <form method="post" action="{{ route('kegiatan.destroy', $k) }}" style="display:inline" onsubmit="return confirm('Hapus kegiatan ini?')">@csrf @method('delete')<button class="btn sm bad">Hapus</button></form>
             @endif</td>

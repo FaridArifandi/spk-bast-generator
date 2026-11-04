@@ -351,15 +351,17 @@ class ImportExcel extends Command
             if (! $nama) {
                 continue;
             }
-            Pegawai::updateOrCreate(
-                ['nama' => $nama],
-                [
-                    'nip' => $this->str($this->v($r, 'NIP')),
-                    'jabatan' => $this->str($this->v($r, 'Jabatan')),
-                    'pangkat' => $this->str($this->v($r, 'Pangkat')),
-                    'golongan' => $this->str($this->v($r, 'Golongan')),
-                ]
-            );
+            $atribut = [
+                'nip' => $this->str($this->v($r, 'NIP')),
+                'jabatan' => $this->str($this->v($r, 'Jabatan')),
+                'pangkat' => $this->str($this->v($r, 'Pangkat')),
+                'golongan' => $this->str($this->v($r, 'Golongan')),
+            ];
+            // jabatan "Pejabat Pembuat Komitmen" otomatis ditandai PPK (penanda tidak pernah dimatikan oleh impor)
+            if (stripos((string) $atribut['jabatan'], 'pejabat pembuat komitmen') !== false) {
+                $atribut['is_ppk'] = true;
+            }
+            Pegawai::updateOrCreate(['nama' => $nama], $atribut);
             $this->catat('Pegawai', true);
         }
     }
@@ -402,14 +404,18 @@ class ImportExcel extends Command
             }
             $tim = $this->str($this->v($r, 'Nama_Tim_Teknis', 'Ketua_Tim'));
             $harga = $this->v($r, 'Harga_Satuan');
-            Kegiatan::updateOrCreate(['kode' => $kode], [
+            $atribut = [
                 'uraian_tugas' => $uraian,
                 'satuan' => $this->str($this->v($r, 'Satuan')) ?: 'Dokumen',
                 'harga_satuan' => $harga === null ? null : $this->int($harga),
                 'beban_anggaran' => $this->str($this->v($r, 'Beban_Anggaran')),
                 'buku_pedoman' => $this->str($this->v($r, 'Buku_Pedoman')),
-                'ketua_tim_id' => $tim ? $this->cariPegawai($tim)?->id : null,
-            ]);
+            ];
+            // Ketua tim hanya diisi bila sheet menyebutnya; sheet kosong tidak menimpa penetapan di aplikasi.
+            if ($ketuaId = ($tim ? $this->cariPegawai($tim)?->id : null)) {
+                $atribut['ketua_tim_id'] = $ketuaId;
+            }
+            Kegiatan::updateOrCreate(['kode' => $kode], $atribut);
             $this->catat('Kegiatan', true);
         }
     }

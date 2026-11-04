@@ -23,12 +23,12 @@
             <td class="num">{{ $p->volume }} {{ $p->satuan }}</td>
             <td class="num">Rp {{ \App\Support\Indonesia::rupiah($p->total_honor) }}</td>
             <td>@if($p->dokumen_id)<a href="{{ route('dokumen.show', $p->dokumen_id) }}">{{ $p->dokumen?->no_spk ?? 'lihat' }}</a>@else<span class="badge warning">Belum</span>@endif</td>
-            <td class="num">@unless($p->dokumen_id)
+            <td class="num">@if(! $p->dokumen_id && auth()->user()->bisaKelolaTim($p->kegiatan?->ketua_tim_id))
                 <div class="row" style="justify-content:flex-end;gap:4px">
                     <a class="btn sm" href="{{ route('penugasan.edit', $p) }}">Ubah</a>
                     <form method="post" action="{{ route('penugasan.destroy', $p) }}" onsubmit="return confirm('Hapus penugasan ini?')">@csrf @method('delete')<button class="btn sm bad">Hapus</button></form>
                 </div>
-            @endunless</td>
+            @endif</td>
         </tr>
     @empty<tr><td colspan="8" class="muted">Belum ada penugasan.</td></tr>@endforelse
     </tbody>

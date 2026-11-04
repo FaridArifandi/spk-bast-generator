@@ -16,6 +16,17 @@ class Kegiatan extends Model
         return $this->belongsTo(Pegawai::class, 'ketua_tim_id');
     }
 
+    /** Kegiatan yang boleh dipakai user: semua untuk ADMIN; untuk KATIM hanya timnya + yang belum punya ketua tim. */
+    public function scopeUntuk($q, ?User $user)
+    {
+        if (! $user || $user->isAdmin()) {
+            return $q;
+        }
+
+        return $q->where(fn ($w) => $w->whereNull('ketua_tim_id')
+            ->when($user->pegawai_id, fn ($x) => $x->orWhere('ketua_tim_id', $user->pegawai_id)));
+    }
+
     public function scopeCari($q, ?string $kata)
     {
         if ($kata) {

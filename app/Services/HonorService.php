@@ -40,7 +40,8 @@ class HonorService
             'mitra' => $mitra[$b->mitra_id] ?? null,
             'jumlah' => (int) $b->jumlah,
             'total' => (int) $b->total,
-            'melebihi' => $batas > 0 && (int) $b->total > $batas,
+            // batas berlaku per bulan: rekap setahun (tanpa bulan) tidak dibandingkan dengan batas
+            'melebihi' => $bulan !== null && $batas > 0 && (int) $b->total > $batas,
         ])->filter(fn ($o) => $o->mitra);
     }
 }

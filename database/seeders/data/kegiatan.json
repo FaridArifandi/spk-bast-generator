@@ -1,0 +1,610 @@
+[
+  {
+    "kode": "KEG001",
+    "uraian_tugas": "Pendataan lapangan susenas maret dan seruti",
+    "satuan": "Dokumen",
+    "harga_satuan": 86000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG002",
+    "uraian_tugas": "Pendataan Survei Harga Perdagangan Besar (SHPB) Bulanan",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG003",
+    "uraian_tugas": "Pendataan Survei Harga Perdagangan Besar (SHPB) Minggu 1",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2899.BMA.006.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG004",
+    "uraian_tugas": "Pendataan Survei Harga Perdagangan Besar (SHPB) Minggu 2",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG005",
+    "uraian_tugas": "Pendataan Sektor Industri Pengolahan dan Pertambangan (HP)",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG006",
+    "uraian_tugas": "Pendataan Harga Produsen Sektor Jasa (HPJ)",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG007",
+    "uraian_tugas": "Pendataan Harga Produsen Sektor Pertanian (HPT)",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG008",
+    "uraian_tugas": "Pendataan Survei Harga Produsen (SHP) Identifikasi Komoditas Utama",
+    "satuan": "Dokumen",
+    "harga_satuan": 48000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG009",
+    "uraian_tugas": "Pendataan Survei Harga Kemahalan Konstruksi (SHKK)",
+    "satuan": "Dokumen",
+    "harga_satuan": 57000,
+    "beban_anggaran": "054.01.GG.2903.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG010",
+    "uraian_tugas": "Pendataan Survei Jasa Akomodasi Bulanan (VHTS)",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2908.BMA.004.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG011",
+    "uraian_tugas": "Pengolahan Pemutakhiran SUSENAS",
+    "satuan": "Dokumen",
+    "harga_satuan": 33000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG012",
+    "uraian_tugas": "Pendataan Survei Industri Besar Sedang",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG013",
+    "uraian_tugas": "Pendatataan lapangan Survei IMK (pemutakhiran)",
+    "satuan": "BS",
+    "harga_satuan": 229000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG014",
+    "uraian_tugas": "Pendataan Podes",
+    "satuan": "Dokumen",
+    "harga_satuan": 57000,
+    "beban_anggaran": "054.01.GG.2907.BMA.008.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG015",
+    "uraian_tugas": "Pemeriksa Lapangan Sensus Ekonomi",
+    "satuan": "OB",
+    "harga_satuan": 4397744,
+    "beban_anggaran": "054.01.GG.2902.FAN.ZZ1.051.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG016",
+    "uraian_tugas": "Petugas Lapangan Sensus Ekonomi",
+    "satuan": "OB",
+    "harga_satuan": 4605000,
+    "beban_anggaran": "054.01.GG.2902.FAN.ZZ1.051.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG017",
+    "uraian_tugas": "Pendataan Survei Perusahaan Galian",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG018",
+    "uraian_tugas": "Pendataan Survei Konstruksi Triwulanan (SKTR)",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG019",
+    "uraian_tugas": "Pendataan Survei Perusahaan Galian Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG020",
+    "uraian_tugas": "Pendataan Survei IBS",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG021",
+    "uraian_tugas": "Pendataan Survei VN-Horti",
+    "satuan": "Dokumen",
+    "harga_satuan": 44000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG022",
+    "uraian_tugas": "Updating Direktori Perusahaan Perkebunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8130.BMA.007.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG023",
+    "uraian_tugas": "Pendataan SKGB Giling",
+    "satuan": "Sampel",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8130.BMA.007.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG024",
+    "uraian_tugas": "Listing Ubinan Subround",
+    "satuan": "BS",
+    "harga_satuan": 166000,
+    "beban_anggaran": "054.01.GG.2910.BMA.007.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG025",
+    "uraian_tugas": "Survei Ubinan Subround",
+    "satuan": "Dokumen",
+    "harga_satuan": 81000,
+    "beban_anggaran": "054.01.GG.8130.BMA.007.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG026",
+    "uraian_tugas": "Pemutakhiran Survei Nasional Literasi Inklusi Keuangan",
+    "satuan": "EA",
+    "harga_satuan": null,
+    "beban_anggaran": null,
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG027",
+    "uraian_tugas": "Pendataan Survei Nasional Literasi Inklusi Keuangan",
+    "satuan": "DOK",
+    "harga_satuan": null,
+    "beban_anggaran": null,
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG028",
+    "uraian_tugas": "Pendataan Pemutakhiran Data Perkembangan Desa (Podes)",
+    "satuan": "Dokumen",
+    "harga_satuan": 57000,
+    "beban_anggaran": "054.01.GG.2907.BMA.008.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG029",
+    "uraian_tugas": "Survei Daya Tarik Wisata Domestik Komersial (VDTW)",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2908.BMA.004.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG030",
+    "uraian_tugas": "Survei Penyedia Jasa Akomodasi Tahunan (VHTL)",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2902.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG031",
+    "uraian_tugas": "Survei Lembaga Keuangan Koperasi Simpang Pinjam (SLK-KSP)",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2908.BMA.004.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG032",
+    "uraian_tugas": "Survei Statistik Keuangan Pemerintah Desa (K3)",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.2908.BMA.004.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG033",
+    "uraian_tugas": "Survei Pola Usaha Non Pertanian (SPUNP) Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2902.BMA.009.005.A.521213",
+    "ketua_tim": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "kode": "KEG034",
+    "uraian_tugas": "Survei Khusus Triwulanan Neraca Produksi (SKTNP) Tahap",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2899.BMA.006.005.A.524113",
+    "ketua_tim": "Raden Daffa Ivan Febrio, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG035",
+    "uraian_tugas": "Survei Khusus Lembaga Non Profit Melayani Rumah Tangga (SKLNPT) Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 91000,
+    "beban_anggaran": "054.01.GG.2898.BMA.007.005.A.524113",
+    "ketua_tim": "Raden Daffa Ivan Febrio, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG036",
+    "uraian_tugas": "Survei Khusus Neraca Produksi (SKNP)",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2899.BMA.006.005.A.524113",
+    "ketua_tim": "Raden Daffa Ivan Febrio, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG037",
+    "uraian_tugas": "Survei Khusus Studi Penyusunan Perubahan Inventori (SKSPPI)",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2898.BMA.007.005.A.524113",
+    "ketua_tim": "Raden Daffa Ivan Febrio, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG038",
+    "uraian_tugas": "Survei Tahunan Perusaahan Industri Manufaktur (STPIM)",
+    "satuan": "Dokumen",
+    "harga_satuan": 91000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG039",
+    "uraian_tugas": "Survei IMK Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG040",
+    "uraian_tugas": "Survei Galian-BH Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG041",
+    "uraian_tugas": "Survei Air Bersih Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG042",
+    "uraian_tugas": "Survei Konstruksi Tahunan (SKTH)",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG043",
+    "uraian_tugas": "Survei Galian-URT",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG044",
+    "uraian_tugas": "Survei Captive Power",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG045",
+    "uraian_tugas": "Survei SKB Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 62000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG046",
+    "uraian_tugas": "Survei Kesejahteraan Petani",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8130.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG047",
+    "uraian_tugas": "Survei Pertanian Terintegrasi (SITASI)",
+    "satuan": "Dokumen",
+    "harga_satuan": 67000,
+    "beban_anggaran": "054.01.GG.2909.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG048",
+    "uraian_tugas": "VPVN-Horti",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG049",
+    "uraian_tugas": "Updating Direktori Perusahaan Awal (DPA) Industri",
+    "satuan": "Dokumen",
+    "harga_satuan": 46000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG050",
+    "uraian_tugas": "Updating Direktori Perusahaan Pertambangan Penggalian dan Energi (UDPE)",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG051",
+    "uraian_tugas": "Updating Direktori Perusahaan Perkebukan dan Direktori Usaha Pertanian Lainnya (DPP-DUTL)",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG052",
+    "uraian_tugas": "Survei IBS Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 75000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG053",
+    "uraian_tugas": "Listing IMK Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 229000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG054",
+    "uraian_tugas": "Survei IMK Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 53000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG055",
+    "uraian_tugas": "Listing IMK Tahunan",
+    "satuan": "Dokumen",
+    "harga_satuan": 229000,
+    "beban_anggaran": "054.01.GG.2904.BMA.006.005.A.521213",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG056",
+    "uraian_tugas": "Survei Galian-BH Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 66000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG057",
+    "uraian_tugas": "Survei Air Bersih Triwulan",
+    "satuan": "Dokumen",
+    "harga_satuan": 44000,
+    "beban_anggaran": "054.01.GG.8131.BMA.005.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG058",
+    "uraian_tugas": "VIP-Horti Triwulanan",
+    "satuan": "Dokumen",
+    "harga_satuan": 44000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG059",
+    "uraian_tugas": "KSA Padi",
+    "satuan": "segmen",
+    "harga_satuan": 110000,
+    "beban_anggaran": "054.01.GG.8130.BMA.007.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG060",
+    "uraian_tugas": "KSA Jagung",
+    "satuan": "segmen",
+    "harga_satuan": 56000,
+    "beban_anggaran": "054.01.GG.8130.BMA.007.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG061",
+    "uraian_tugas": "SKB Bulanan",
+    "satuan": "Dokumen",
+    "harga_satuan": 85000,
+    "beban_anggaran": "054.01.GG.8130.BMA.008.005.A.524113",
+    "ketua_tim": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "kode": "KEG062",
+    "uraian_tugas": "Pengolahan Updating Listing Susenas",
+    "satuan": "Dokumen",
+    "harga_satuan": 33000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG063",
+    "uraian_tugas": "Pengolahan Pendataan Susenas",
+    "satuan": "Dokumen",
+    "harga_satuan": 26000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG064",
+    "uraian_tugas": "Pengolahan Seruti Triwulan I 2026",
+    "satuan": "Dokumen",
+    "harga_satuan": 18000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG065",
+    "uraian_tugas": "Pengolahan Seruti Triwulan II 2026",
+    "satuan": "Dokumen",
+    "harga_satuan": 25000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG066",
+    "uraian_tugas": "Pengolahan Seruti Triwulan III 2026",
+    "satuan": "Dokumen",
+    "harga_satuan": 18000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG067",
+    "uraian_tugas": "Pengolahan Seruti Triwulan IV 2026",
+    "satuan": "Dokumen",
+    "harga_satuan": 25000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "kode": "KEG068",
+    "uraian_tugas": "Pemutakhiran Survei Angkatan Kerja Nasional (Sakernas)",
+    "satuan": "Dokumen",
+    "harga_satuan": 166000,
+    "beban_anggaran": "054.01.GG.2904.BMA.004.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG069",
+    "uraian_tugas": "Pendataan Survei Angkatan Kerja Nasional (Sakernas)",
+    "satuan": "Dokumen",
+    "harga_satuan": 55000,
+    "beban_anggaran": "054.01.GG.2904.BMA.004.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG070",
+    "uraian_tugas": "Pemutakhiran Survei Sosial Ekonomi Nasional (Susenas)",
+    "satuan": "EA",
+    "harga_satuan": 166000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG071",
+    "uraian_tugas": "Pendataan Survei Sosial Ekonomi Nasional (Susenas)",
+    "satuan": "Dokumen",
+    "harga_satuan": 128000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG072",
+    "uraian_tugas": "Pendataan Survei Ekonomi Rumah Tangga Triwulanan (Seruti) Triwulan I",
+    "satuan": "Dokumen",
+    "harga_satuan": 86000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG073",
+    "uraian_tugas": "Pendataan Survei Ekonomi Rumah Tangga Triwulanan (Seruti) Triwulan II",
+    "satuan": "Dokumen",
+    "harga_satuan": 124000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG074",
+    "uraian_tugas": "Pendataan Survei Ekonomi Rumah Tangga Triwulanan (Seruti) Triwulan III",
+    "satuan": "Dokumen",
+    "harga_satuan": 86000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG075",
+    "uraian_tugas": "Pendataan Survei Ekonomi Rumah Tangga Triwulanan (Seruti) Triwulan IV",
+    "satuan": "Dokumen",
+    "harga_satuan": 124000,
+    "beban_anggaran": "054.01.GG.2906.BMA.006.005.A.521213",
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "kode": "KEG076",
+    "uraian_tugas": "Pendataan Data Tunggal Bencana Sumatera",
+    "satuan": "Dokumen",
+    "harga_satuan": null,
+    "beban_anggaran": null,
+    "ketua_tim": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  }
+]

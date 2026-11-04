@@ -23,6 +23,12 @@ class DokumenController extends Controller
         private DokumenRenderer $renderer,
     ) {}
 
+    /** KATIM hanya boleh mengelola SPK timnya sendiri (ADMIN bebas). */
+    private function izinkanTim(Request $request, Dokumen $dokumen): void
+    {
+        abort_unless($request->user()->bisaKelolaTim($dokumen->ketua_tim_id), 403, 'Dokumen ini bukan milik tim Anda.');
+    }
+
     public function index(Request $request)
     {
         $items = Dokumen::with(['mitra', 'pegawai'])
@@ -44,7 +50,7 @@ class DokumenController extends Controller
     /** Langkah 1: pilih petugas; langkah 2: pilih penugasan yang akan dimasukkan ke SPK. */
     public function create(Request $request)
     {
-        $tersedia = Penugasan::belumDipakai()->with(['mitra', 'pegawai', 'kegiatan', 'pmlMitra', 'pmlPegawai'])->get();
+        $tersedia = Penugasan::belumDipakai()->whereHas('kegiatan', fn ($q) => $q->untuk($request->user()))->with(['mitra', 'pegawai', 'kegiatan', 'pmlMitra', 'pmlPegawai'])->get();
 
         $petugasList = $tersedia->groupBy('petugas_ref')->map(fn ($g) => (object) [
             'ref' => $g->first()->petugas_ref,
@@ -74,18 +80,24 @@ class DokumenController extends Controller
             'penugasan_ids.*' => ['integer', 'exists:penugasan,id'],
             'no_spk' => ['required', 'string', 'max:100'],
             'tanggal_spk' => ['required', 'date'],
-            'ppk_id' => ['required', 'exists:pegawai,id'],
+            'ppk_id' => ['required', Rule::exists('pegawai', 'id')->where('is_ppk', true)],
             'ketua_tim_id' => ['nullable', 'exists:pegawai,id'],
             'judul_pekerjaan' => ['nullable', 'string', 'max:600'],
             'nomor_kepka' => ['nullable', 'string', 'max:255'],
             'tanggal_kepka' => ['nullable', 'date'],
-        ], ['penugasan_ids.required' => 'Pilih minimal satu penugasan.']);
+        ], [
+            'penugasan_ids.required' => 'Pilih minimal satu penugasan.',
+            'ppk_id.exists' => 'Pejabat yang dipilih bukan PPK. Tandai pegawai tersebut sebagai PPK di menu Pegawai.',
+        ]);
 
         if ($this->nomor->pakaiSpk($data['no_spk'])) {
             return back()->withInput()->withErrors(['no_spk' => 'Nomor SPK sudah dipakai dokumen lain.']);
         }
 
-        $penugasan = Penugasan::whereIn('id', $data['penugasan_ids'])->get();
+        $penugasan = Penugasan::with('kegiatan')->whereIn('id', $data['penugasan_ids'])->get();
+        foreach ($penugasan as $p) {
+            abort_unless($request->user()->bisaKelolaTim($p->kegiatan?->ketua_tim_id), 403, 'Ada penugasan yang bukan milik tim Anda.');
+        }
 
         try {
             $dokumen = $this->service->buatDariPenugasan($penugasan, $data, $request->user());
@@ -188,8 +200,9 @@ class DokumenController extends Controller
         return response()->download($zipPath, $namaZip)->deleteFileAfterSend(true);
     }
 
-    public function edit(Dokumen $dokumen)
+    public function edit(Request $request, Dokumen $dokumen)
     {
+        $this->izinkanTim($request, $dokumen);
         $dokumen->load(['mitra', 'pegawai', 'details']);
 
         return view('dokumen.edit', [
@@ -200,10 +213,11 @@ class DokumenController extends Controller
 
     public function update(Request $request, Dokumen $dokumen)
     {
+        $this->izinkanTim($request, $dokumen);
         $data = $request->validate([
             'no_spk' => ['required', 'string', 'max:100'],
             'tanggal_spk' => ['required', 'date'],
-            'ppk_id' => ['required', 'exists:pegawai,id'],
+            'ppk_id' => ['required', Rule::exists('pegawai', 'id')->where(fn ($q) => $q->where('is_ppk', true)->orWhere('id', $dokumen->ppk_id))],
             'ketua_tim_id' => ['nullable', 'exists:pegawai,id'],
             'judul_pekerjaan' => ['required', 'string', 'max:600'],
             'nomor_kepka' => ['nullable', 'string', 'max:255'],
@@ -225,16 +239,24 @@ class DokumenController extends Controller
         return redirect()->route('dokumen.show', $dokumen)->with('sukses', 'SPK diperbarui. Status verifikasi dikembalikan ke menunggu bila sebelumnya sudah diputuskan.');
     }
 
-    public function destroy(Dokumen $dokumen)
+    public function destroy(Request $request, Dokumen $dokumen)
     {
+        $this->izinkanTim($request, $dokumen);
+
+        // SPK yang sudah disetujui PPK hanya bisa dihapus dengan konfirmasi eksplisit
+        if ($dokumen->status_verifikasi === StatusVerifikasi::Disetujui && ! $request->boolean('konfirmasi')) {
+            return back()->with('galat', 'SPK ini sudah disetujui PPK. Hapus ulang dan setujui konfirmasinya bila memang yakin.');
+        }
+
         $this->service->hapus($dokumen);
 
         return redirect()->route('dokumen.index')->with('sukses', 'Dokumen dihapus. Penugasannya bisa dibuatkan SPK kembali.');
     }
 
     /** Form pengisian nomor & tanggal BAST (tidak memengaruhi status verifikasi SPK). */
-    public function bast(Dokumen $dokumen)
+    public function bast(Request $request, Dokumen $dokumen)
     {
+        $this->izinkanTim($request, $dokumen);
         $dokumen->load(['mitra', 'pegawai']);
         $usulan = $this->nomor->usulan((int) $dokumen->tahun);
         $urut = $usulan['bast_urut'];
@@ -256,6 +278,7 @@ class DokumenController extends Controller
 
     public function bastSimpan(Request $request, Dokumen $dokumen)
     {
+        $this->izinkanTim($request, $dokumen);
         $rules = [];
         foreach ($dokumen->jenisBast() as $jenis) {
             $kolom = str_replace('-', '_', $jenis);
@@ -270,7 +293,7 @@ class DokumenController extends Controller
             $kolom = 'no_bast_'.str_replace('-', '_', $jenis);
             $nilai = $data[$kolom];
             $norm = $this->nomor->normal($nilai);
-            if (in_array($norm, $dipakaiSendiri, true) || $this->nomor->pakaiBast($nilai, $dokumen->id)) {
+            if (in_array($norm, $dipakaiSendiri, true) || $this->nomor->bastDipakai($nilai, $dokumen->id)) {
                 return back()->withInput()->withErrors([$kolom => 'Nomor BAST sudah dipakai.']);
             }
             $dipakaiSendiri[] = $norm;

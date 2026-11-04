@@ -36,7 +36,7 @@ class PenugasanController extends Controller
     public function create()
     {
         return view('penugasan.create', [
-            'kegiatan' => Kegiatan::orderBy('kode')->get(),
+            'kegiatan' => Kegiatan::untuk(request()->user())->orderBy('kode')->get(),
             'mitra' => Mitra::where('aktif', true)->orderBy('nama')->get(['id', 'nama', 'id_mitra', 'posisi']),
             'pegawai' => Pegawai::orderBy('nama')->get(['id', 'nama', 'jabatan']),
             'peran' => Peran::options(),
@@ -69,6 +69,9 @@ class PenugasanController extends Controller
             'rows.*.harga_satuan' => ['required', 'integer', 'min:0'],
         ]);
 
+        $kegiatan = Kegiatan::findOrFail($data['kegiatan_id']);
+        abort_unless($request->user()->bisaKelolaTim($kegiatan->ketua_tim_id), 403, 'Kegiatan ini bukan milik tim Anda.');
+
         $n = $service->simpan($data, $data['rows'], $request->user());
 
         return redirect()->route('penugasan.index')->with('sukses', "$n penugasan tersimpan.");
@@ -76,6 +79,8 @@ class PenugasanController extends Controller
 
     public function edit(Penugasan $penugasan)
     {
+        abort_unless(request()->user()->bisaKelolaTim($penugasan->kegiatan?->ketua_tim_id), 403, 'Penugasan ini bukan milik tim Anda.');
+
         if ($penugasan->dokumen_id) {
             return redirect()->route('penugasan.index')->with('galat', 'Penugasan sudah dipakai di SPK. Ubah rinciannya langsung lewat menu Ubah SPK.');
         }
@@ -84,7 +89,7 @@ class PenugasanController extends Controller
 
         return view('penugasan.edit', [
             'penugasan' => $penugasan,
-            'kegiatan' => Kegiatan::orderBy('kode')->get(),
+            'kegiatan' => Kegiatan::untuk(request()->user())->orderBy('kode')->get(),
             'mitra' => Mitra::where('aktif', true)->orderBy('nama')->get(['id', 'nama', 'id_mitra', 'posisi']),
             'pegawai' => Pegawai::orderBy('nama')->get(['id', 'nama', 'jabatan']),
             'peran' => Peran::options(),
@@ -93,6 +98,8 @@ class PenugasanController extends Controller
 
     public function update(Request $request, Penugasan $penugasan)
     {
+        abort_unless($request->user()->bisaKelolaTim($penugasan->kegiatan?->ketua_tim_id), 403, 'Penugasan ini bukan milik tim Anda.');
+
         if ($penugasan->dokumen_id) {
             return redirect()->route('penugasan.index')->with('galat', 'Penugasan sudah dipakai di SPK. Ubah rinciannya langsung lewat menu Ubah SPK.');
         }
@@ -121,6 +128,7 @@ class PenugasanController extends Controller
         ]);
 
         $kegiatan = Kegiatan::findOrFail($data['kegiatan_id']);
+        abort_unless($request->user()->bisaKelolaTim($kegiatan->ketua_tim_id), 403, 'Kegiatan ini bukan milik tim Anda.');
         $mulai = Indonesia::carbon($data['tanggal_mulai'] ?? null);
 
         $periode = [
@@ -160,6 +168,8 @@ class PenugasanController extends Controller
 
     public function destroy(Penugasan $penugasan)
     {
+        abort_unless(request()->user()->bisaKelolaTim($penugasan->kegiatan?->ketua_tim_id), 403, 'Penugasan ini bukan milik tim Anda.');
+
         if ($penugasan->dokumen_id) {
             return back()->with('galat', 'Penugasan sudah dipakai di SPK. Hapus/ubah SPK-nya lebih dulu.');
         }

@@ -56,4 +56,36 @@ class User extends Authenticatable
     {
         return $this->hasRole(Role::Admin, Role::Ppk);
     }
+
+    /**
+     * Boleh mengelola data milik tim tertentu. ADMIN selalu boleh; KATIM hanya untuk timnya sendiri
+     * (pegawai akunnya = ketua tim data tsb). Data tanpa ketua tim terbuka bagi semua KATIM
+     * sampai ketua tim ditetapkan.
+     */
+    public function bisaKelolaTim(?int $ketuaTimId): bool
+    {
+        if ($this->isAdmin()) {
+            return true;
+        }
+        if (! $this->hasRole(Role::Katim)) {
+            return false;
+        }
+
+        return $ketuaTimId === null
+            || ($this->pegawai_id !== null && (int) $this->pegawai_id === (int) $ketuaTimId);
+    }
+
+    /** Boleh memutuskan verifikasi dokumen milik PPK tertentu (ADMIN bebas; PPK hanya miliknya sendiri). */
+    public function bisaVerifikasiPpk(?int $ppkId): bool
+    {
+        if ($this->isAdmin()) {
+            return true;
+        }
+        if (! $this->hasRole(Role::Ppk)) {
+            return false;
+        }
+
+        return $ppkId === null
+            || ($this->pegawai_id !== null && (int) $this->pegawai_id === (int) $ppkId);
+    }
 }

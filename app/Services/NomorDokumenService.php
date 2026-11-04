@@ -91,6 +91,16 @@ class NomorDokumenService
         return $this->cariDi(self::KOLOM_BAST, $nomor, $abaikanId);
     }
 
+    /**
+     * Nomor BAST dipakai di mana pun: kolom BAST dokumen maupun BAST SM → PPK
+     * (keduanya satu urutan penomoran). Abaikan satu baris saat sedang menyunting barisnya sendiri.
+     */
+    public function bastDipakai(string $nomor, ?int $abaikanDokumenId = null, ?int $abaikanSmPpkId = null): bool
+    {
+        return $this->pakaiBast($nomor, $abaikanDokumenId) !== null
+            || $this->pakaiBastSmPpk($nomor, $abaikanSmPpkId);
+    }
+
     public function pakaiBastSmPpk(string $nomor, ?int $abaikanId = null): bool
     {
         $target = $this->normal($nomor);

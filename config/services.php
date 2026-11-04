@@ -41,6 +41,11 @@ return [
         'url' => env('SHEETS_URL'),
     ],
 
+    // Kata sandi seragam untuk akun hasil UserSeeder (kosongkan = acak per akun)
+    'seed' => [
+        'password' => env('SEED_USER_PASSWORD'),
+    ],
+
     // Akun admin awal (seed)
     'admin' => [
         'username' => env('ADMIN_USERNAME', 'admin'),

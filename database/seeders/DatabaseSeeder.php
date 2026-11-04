@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->parameter();
-        $this->admin();
+        $this->call([PegawaiSeeder::class, KegiatanSeeder::class, UserSeeder::class]);
+        $this->admin(); // cadangan: hanya dibuat bila belum ada akun ADMIN
     }
 
     private function parameter(): void

@@ -1,0 +1,68 @@
+[
+  {
+    "username": "srideza",
+    "role": "ADMIN",
+    "sub_role": null,
+    "pegawai": "Sri Deza Kurnia Devi, ST"
+  },
+  {
+    "username": "rizqerosalia",
+    "role": "ADMIN",
+    "sub_role": null,
+    "pegawai": "Rizqe Putri Rosalia, A.Md.Stat."
+  },
+  {
+    "username": "armajuwita",
+    "role": "PPK",
+    "sub_role": null,
+    "pegawai": "Arma Juwita, S.Tr.Stat"
+  },
+  {
+    "username": "triwahyudi",
+    "role": "KATIM",
+    "sub_role": "distribusi",
+    "pegawai": "Tri Wahyudi, S.Stat"
+  },
+  {
+    "username": "radendaffa",
+    "role": "KATIM",
+    "sub_role": "neraca",
+    "pegawai": "Raden Daffa Ivan Febrio, S.Tr. Stat."
+  },
+  {
+    "username": "thariqalfatih",
+    "role": "KATIM",
+    "sub_role": "produksi",
+    "pegawai": "M. Thariq Alfatih, S.Tr.Stat"
+  },
+  {
+    "username": "mutiasoraya",
+    "role": "KATIM",
+    "sub_role": "pengolahan",
+    "pegawai": "Mutia Soraya Adila, S.Tr. Stat."
+  },
+  {
+    "username": "putrinurhilwa",
+    "role": "KATIM",
+    "sub_role": "sosial",
+    "pegawai": "Putri Nurhilwa Salsabila, S.Tr.Stat."
+  },
+  {
+    "username": "suciarti",
+    "role": "KATIM",
+    "sub_role": "diseminasi",
+    "pegawai": "Suciarti Pertiwi, S.Tr.Stat"
+  },
+  {
+    "username": "adiputra",
+    "role": "PENGGUNA",
+    "sub_role": null,
+    "pegawai": "Adi Putra, SP"
+  },
+  {
+    "username": "ernilusiani",
+    "role": "PENGGUNA",
+    "sub_role": null,
+    "pegawai": "Erni Lusiani, S.Stat."
+  }
+]
