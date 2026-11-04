@@ -1,0 +1,53 @@
+<?php
+
+return [
+    'accepted' => ':attribute harus disetujui.',
+    'after_or_equal' => ':attribute harus berupa tanggal setelah atau sama dengan :date.',
+    'array' => ':attribute harus berupa array.',
+    'between' => [
+        'numeric' => ':attribute harus di antara :min dan :max.',
+        'string' => ':attribute harus di antara :min dan :max karakter.',
+    ],
+    'confirmed' => 'Konfirmasi :attribute tidak cocok.',
+    'current_password' => 'Password saat ini salah.',
+    'date' => ':attribute bukan tanggal yang valid.',
+    'email' => ':attribute harus berupa alamat email yang valid.',
+    'exists' => ':attribute yang dipilih tidak valid.',
+    'in' => ':attribute yang dipilih tidak valid.',
+    'integer' => ':attribute harus berupa angka bulat.',
+    'max' => [
+        'numeric' => ':attribute tidak boleh lebih dari :max.',
+        'string' => ':attribute tidak boleh lebih dari :max karakter.',
+        'array' => ':attribute tidak boleh lebih dari :max item.',
+    ],
+    'min' => [
+        'numeric' => ':attribute minimal :min.',
+        'string' => ':attribute minimal :min karakter.',
+        'array' => ':attribute minimal :min item.',
+    ],
+    'numeric' => ':attribute harus berupa angka.',
+    'regex' => 'Format :attribute tidak valid.',
+    'required' => ':attribute wajib diisi.',
+    'string' => ':attribute harus berupa teks.',
+    'unique' => ':attribute sudah dipakai.',
+    'password' => [
+        'letters' => ':attribute harus mengandung huruf.',
+        'mixed' => ':attribute harus mengandung huruf besar dan kecil.',
+        'numbers' => ':attribute harus mengandung angka.',
+        'symbols' => ':attribute harus mengandung simbol.',
+    ],
+    'attributes' => [
+        'username' => 'Username', 'password' => 'Password', 'password_lama' => 'Password saat ini',
+        'nama' => 'Nama', 'nip' => 'NIP', 'nik' => 'NIK', 'id_mitra' => 'ID mitra', 'kode' => 'Kode',
+        'uraian_tugas' => 'Uraian tugas', 'harga_satuan' => 'Harga satuan', 'satuan' => 'Satuan',
+        'kegiatan_id' => 'Kegiatan', 'tanggal_mulai' => 'Tanggal mulai', 'tanggal_selesai' => 'Tanggal selesai',
+        'tanggal_spk' => 'Tanggal SPK', 'no_spk' => 'Nomor SPK', 'ppk_id' => 'PPK', 'ketua_tim_id' => 'Ketua tim',
+        'tahun' => 'Tahun', 'bulan' => 'Bulan', 'role' => 'Peran', 'no_bast' => 'Nomor BAST', 'tanggal_bast' => 'Tanggal BAST',
+        'judul_pekerjaan' => 'Judul pekerjaan', 'penugasan_ids' => 'Penugasan', 'rows' => 'Petugas',
+        'rows.*.petugas' => 'Petugas', 'rows.*.volume' => 'Volume', 'rows.*.harga_satuan' => 'Harga satuan',
+        'no_bast_ppl_pml' => 'Nomor BAST PPL→PML', 'tanggal_bast_ppl_pml' => 'Tanggal BAST PPL→PML',
+        'no_bast_ppl_sm' => 'Nomor BAST PPL→SM', 'tanggal_bast_ppl_sm' => 'Tanggal BAST PPL→SM',
+        'no_bast_pml_sm' => 'Nomor BAST PML→SM', 'tanggal_bast_pml_sm' => 'Tanggal BAST PML→SM',
+        'no_bast_entri_sm' => 'Nomor BAST Entri→SM', 'tanggal_bast_entri_sm' => 'Tanggal BAST Entri→SM',
+    ],
+];
