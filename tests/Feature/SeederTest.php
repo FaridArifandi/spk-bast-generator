@@ -7,6 +7,7 @@ use App\Models\Pegawai;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class SeederTest extends TestCase
@@ -49,5 +50,17 @@ class SeederTest extends TestCase
         $this->assertSame(76, Kegiatan::count());
         $this->assertSame(11, User::count());
         $this->assertSame($hash, User::where('username', 'armajuwita')->value('password'));
+    }
+
+    public function test_semua_akun_seeder_memakai_password_awal_123456_dan_bisa_login(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        foreach (User::all() as $user) {
+            $this->assertTrue(Hash::check('123456', $user->password), "Password awal {$user->username} bukan 123456");
+        }
+
+        $this->post('/login', ['username' => 'srideza', 'password' => '123456'])->assertRedirect();
+        $this->assertAuthenticatedAs(User::where('username', 'srideza')->first());
     }
 }

@@ -25,18 +25,20 @@ cp .env.example .env          # lalu atur APP_ENV=local, APP_DEBUG=true
 # buat database kosong `spk_bast_generator` (Laragon: Menu → MySQL → HeidiSQL/phpMyAdmin,
 # atau: mysql -uroot -e "CREATE DATABASE spk_bast_generator CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
 php artisan key:generate
-php artisan migrate --seed    # catat password admin yang ditampilkan
+php artisan migrate --seed    # akun awal: lihat database/seeders/data/users.json, password awal 123456
 php artisan spk:import-excel /path/DB_SPK_BAST.xlsx   # opsional: impor data lama
 php artisan serve
 ```
 Kebutuhan: PHP ≥ 8.3 dengan ekstensi `zip`, `mbstring`, `xml`, `gd` (untuk PhpSpreadsheet), `pdo_mysql`.
-Tentukan password admin sendiri dengan mengisi `ADMIN_PASSWORD` di `.env` sebelum `--seed`.
+
+### Akun awal
+Seeder membuat 11 akun (admin, PPK, KATIM per tim, staf) dari `database/seeders/data/users.json`. **Semua memakai password awal `123456`** — minta tiap pengguna segera menggantinya lewat menu Profil. Seeder tidak menimpa akun yang sudah ada.
 
 ## Deploy ke cPanel
 1. Pastikan PHP 8.3+ di MultiPHP Manager.
 2. Unggah proyek ke luar `public_html` (mis. `~/spk-bast`), lalu arahkan *document root* domain/subdomain ke folder `public`.
 3. Jalankan `composer install --no-dev --optimize-autoloader` (Terminal cPanel) atau unggah `vendor` dari lokal.
-4. Salin `.env.example` → `.env`, isi `APP_URL`, `DB_*` (MySQL), `ADMIN_*`; `php artisan key:generate`.
+4. Salin `.env.example` → `.env`, isi `APP_URL`, `DB_*` (MySQL); `php artisan key:generate`. Contoh lengkap untuk hosting ada di `.env.hosting.example`.
 5. `php artisan migrate --force --seed`, lalu `php artisan config:cache route:cache view:cache`.
 6. Pastikan `storage` dan `bootstrap/cache` dapat ditulis.
 

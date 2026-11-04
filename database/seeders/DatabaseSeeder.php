@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Parameter;
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +11,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->parameter();
         $this->call([PegawaiSeeder::class, KegiatanSeeder::class, UserSeeder::class]);
-        $this->admin(); // cadangan: hanya dibuat bila belum ada akun ADMIN
     }
 
     private function parameter(): void
@@ -27,32 +24,6 @@ class DatabaseSeeder extends Seeder
 
         foreach ($bawaan as $kode => [$nilai, $ket]) {
             Parameter::firstOrCreate(['kode' => $kode], ['nilai' => $nilai, 'keterangan' => $ket]);
-        }
-    }
-
-    private function admin(): void
-    {
-        if (User::where('role', 'ADMIN')->exists()) {
-            return;
-        }
-
-        $username = strtolower((string) config('services.admin.username', 'admin'));
-        $adminPass = config('services.admin.password');
-        $password = $adminPass ?: Str::password(14, symbols: false);
-
-        User::create([
-            'nama' => config('services.admin.nama', 'Administrator'),
-            'username' => $username,
-            'password' => $password,
-            'role' => 'ADMIN',
-            'aktif' => true,
-        ]);
-
-        if (! $adminPass) {
-            $this->command?->warn("Akun administrator dibuat. Username: {$username}  Password: {$password}");
-            $this->command?->warn('Catat password ini sekarang — tidak akan ditampilkan lagi. Ganti lewat menu Profil.');
-        } else {
-            $this->command?->info("Akun administrator '{$username}' dibuat dengan password dari ADMIN_PASSWORD.");
         }
     }
 }
