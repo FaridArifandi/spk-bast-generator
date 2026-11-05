@@ -76,7 +76,7 @@ class ImportExcel extends Command
         }
         $this->option('dry-run')
             ? $this->comment('Mode --dry-run: tidak ada data yang disimpan.')
-            : $this->info('Selesai. Akun pengguna tidak diimpor (kata sandi lama tersimpan polos); buat ulang lewat menu Pengguna.');
+            : $this->info('Selesai. Aman dijalankan ulang: data yang sudah ada dilewati. Akun pengguna tidak diimpor.');
 
         return self::SUCCESS;
     }
@@ -438,6 +438,24 @@ class ImportExcel extends Command
             $harga = $this->int($this->v($r, 'Harga_Satuan') ?? $keg->harga_satuan);
             $total = $this->int($this->v($r, 'Total_Honor') ?? 0) ?: $volume * $harga;
 
+            $kunciPenugasan = [
+                'kegiatan_id' => $keg->id,
+                'petugas_tipe' => $petugas[0],
+                'mitra_id' => $petugas[1],
+                'pegawai_id' => $petugas[2],
+                'peran' => $this->peran($this->v($r, 'Peran')),
+                'tahun' => $tahun,
+                'bulan' => $this->str($this->v($r, 'Bulan')),
+                'triwulan' => $this->str($this->v($r, 'Triwulan')),
+                'tahap' => $this->str($this->v($r, 'Tahap')),
+                'subround' => $this->str($this->v($r, 'Subround')),
+                'semester' => $this->str($this->v($r, 'Semester')),
+            ];
+            if (Penugasan::where($kunciPenugasan)->exists()) {
+                $this->catat('Penugasan', false);
+                continue;
+            }
+
             Penugasan::create(array_merge([
                 'kegiatan_id' => $keg->id,
                 'petugas_tipe' => $petugas[0],
@@ -515,6 +533,16 @@ class ImportExcel extends Command
             $tahun = (int) ($this->v($r, 'Tahun') ?? substr($tglSpk ?: ($mulai ?: now()->toDateString()), 0, 4));
             if ($tahun < 2000 || $tahun > 2100) {
                 $tahun = (int) (substr($tglSpk ?: $mulai ?: now()->toDateString(), 0, 4));
+            }
+
+            $kunciDok = $noSpk
+                ? ['no_spk' => $noSpk, 'peran' => $this->peran($this->v($r, 'Peran'), $r), 'petugas_tipe' => $petugas[0], 'mitra_id' => $petugas[1], 'pegawai_id' => $petugas[2]]
+                : ['peran' => $this->peran($this->v($r, 'Peran'), $r), 'petugas_tipe' => $petugas[0], 'mitra_id' => $petugas[1], 'pegawai_id' => $petugas[2],
+                    'tahun' => $tahun, 'bulan' => $this->str($this->v($r, 'Bulan')), 'tanggal_mulai' => $mulai, 'judul_pekerjaan' => $this->str($this->v($r, 'Judul_Pekerjaan_Dokumen'))];
+            // withTrashed: dokumen yang sengaja dihapus di aplikasi tidak dihidupkan lagi oleh impor ulang
+            if (Dokumen::withTrashed()->where($kunciDok)->exists()) {
+                $this->catat('Dokumen (SPK/BAST)', false);
+                continue;
             }
 
             $d = Dokumen::create(array_merge([
@@ -608,13 +636,23 @@ class ImportExcel extends Command
                 $this->catat('BAST SM→PPK', false);
                 continue;
             }
+            $tahunSm = (int) ($this->v($r, 'Tahun') ?? now()->year);
+            $noSm = $this->str($this->v($r, 'No_BAST_SM_PPK'));
+            $kunciSm = $noSm
+                ? ['no_bast' => $noSm]
+                : ['tahun' => $tahunSm, 'bulan' => $this->str($this->v($r, 'Bulan')), 'uraian_tugas' => $uraian,
+                    'ketua_tim_id' => $this->cariPegawai($this->str($this->v($r, 'Ketua_Tim')))?->id];
+            if (BastSmPpk::withTrashed()->where($kunciSm)->exists()) {
+                $this->catat('BAST SM→PPK', false);
+                continue;
+            }
             BastSmPpk::create([
-                'tahun' => (int) ($this->v($r, 'Tahun') ?? now()->year),
+                'tahun' => $tahunSm,
                 'bulan' => $this->str($this->v($r, 'Bulan')),
                 'uraian_tugas' => $uraian,
                 'ppk_id' => $this->cariPegawai($this->str($this->v($r, 'PPK')))?->id,
                 'ketua_tim_id' => $this->cariPegawai($this->str($this->v($r, 'Ketua_Tim')))?->id,
-                'no_bast' => $this->str($this->v($r, 'No_BAST_SM_PPK')),
+                'no_bast' => $noSm,
                 'tanggal_bast' => $this->tgl($this->v($r, 'Tanggal_BAST_SM_PPK', 'Tanggal')),
                 'total_honor' => $this->int($this->v($r, 'Total_Honor')),
                 'status_verifikasi' => $this->status($verif, $this->v($r, 'Status_Generate_BAST_SM_PPK')),

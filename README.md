@@ -59,3 +59,20 @@ Akun pengguna lama tidak diimpor (kata sandi lama polos); buat ulang di menu Pen
 
 ## Pengujian
 `php artisan test`
+
+## Data lama & sinkron ke Google Sheets
+
+**Impor data lama (sekali jalan, aman diulang):**
+```
+php artisan spk:import-excel DB_SPK_BAST.xlsx --dry-run   # cek dulu
+php artisan spk:import-excel DB_SPK_BAST.xlsx
+```
+Penugasan, SPK/BAST, dan BAST SM→PPK yang sudah ada dilewati, jadi tidak ada data ganda.
+
+**Ekspor searah database → Sheets (tiap 10 menit, hanya bila ada perubahan):**
+1. Tempel `docs/apps-script-export.gs` ke Apps Script spreadsheet, ganti `TOKEN`, deploy sebagai Web app (akses "Anyone").
+2. Isi `SHEETS_URL` (URL `/exec`) dan `SHEETS_TOKEN` (sama dengan TOKEN) di `.env`, lalu `php artisan config:clear`.
+3. Di cPanel → Cron Jobs, tambah per menit: `* * * * * /usr/local/bin/php /home/USER/spk-bast-generator/artisan schedule:run >> /dev/null 2>&1` (sesuaikan path PHP & folder).
+4. Uji manual: `php artisan spk:export-sheets --force`, atau tombol "Sinkronkan sekarang" di menu Parameter (admin).
+
+Sheets bersifat cermin: isinya ditulis ulang tiap ekspor, jadi jangan diedit langsung (kunci tab dengan "Protect sheet"). NIK, alamat, tanggal lahir, telepon, dan email mitra tidak ikut diekspor.

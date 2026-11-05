@@ -39,6 +39,8 @@ return [
     // Apps Script lama (doGet ?sheet=...) untuk `php artisan spk:sync-sheets`
     'sheets' => [
         'url' => env('SHEETS_URL'),
+        // Token rahasia untuk ekspor DB → Sheets (harus sama dengan TOKEN di skrip Apps Script)
+        'token' => env('SHEETS_TOKEN'),
     ],
 
 ];

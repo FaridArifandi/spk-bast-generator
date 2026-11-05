@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parameter;
+use App\Services\SheetsExportService;
 use Illuminate\Http\Request;
 
 class ParameterController extends Controller
@@ -16,9 +17,21 @@ class ParameterController extends Controller
         'BATAS_HONOR_MAKSIMUM' => ['Batas honor maksimum per mitra per bulan (Rp)', 'number'],
     ];
 
-    public function edit()
+    public function edit(SheetsExportService $sheets)
     {
-        return view('admin.parameter', ['daftar' => self::DAFTAR, 'nilai' => Parameter::pluck('nilai', 'kode')]);
+        return view('admin.parameter', [
+            'daftar' => self::DAFTAR,
+            'nilai' => Parameter::pluck('nilai', 'kode'),
+            'sheetsSiap' => $sheets->siap(),
+            'sheetsStatus' => $sheets->statusTerakhir(),
+        ]);
+    }
+
+    public function sinkronSheets(SheetsExportService $sheets)
+    {
+        $hasil = $sheets->kirim(true);
+
+        return back()->with($hasil['status'] === 'ok' ? 'sukses' : 'galat', 'Ekspor ke Sheets: '.$hasil['pesan']);
     }
 
     public function update(Request $request)

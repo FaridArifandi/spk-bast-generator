@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('admin/pengguna', UserController::class)->except(['index', 'show'])->names('admin.pengguna')->parameters(['pengguna' => 'user']);
         Route::get('/admin/parameter', [ParameterController::class, 'edit'])->name('admin.parameter');
         Route::put('/admin/parameter', [ParameterController::class, 'update'])->name('admin.parameter.update');
+        Route::post('/admin/sheets/sinkron', [ParameterController::class, 'sinkronSheets'])->name('admin.sheets.sinkron');
     });
 
     Route::middleware('role:ADMIN,KATIM')->group(function () {
